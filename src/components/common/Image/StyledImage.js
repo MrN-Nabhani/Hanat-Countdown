@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Image = styled.img.attrs({
-  src: "assets/time.jpg",
+  src: process.env.PUBLIC_URL + "/assets/time.png",
 })`
   position: fixed;
   top: 0;
