@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
-import Dashboard from "./pages/Dashboard/Dashboard.js";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 class App extends Component {
   render() {

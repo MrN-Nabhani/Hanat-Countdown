@@ -25,7 +25,9 @@ export const Input = styled.input`
 
 export const Label = styled.label`
   width: 25%;
+  text-align: left;
   @media only screen and (max-width: 800px) {
     width: 50%;
+    text-align: center;
   }
 `;
