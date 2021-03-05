@@ -1,9 +1,11 @@
 export default {
   colors: {
-    primary: "#fff", // "#f3e9d2", /*#fff3e5*/ /*rgb(252, 249, 217)" */
+    primary: "#ccc", // "#f3e9d2", /*#fff3e5*/ /*rgb(252, 249, 217)" */
     primaryShadow: "#f7f7f7", //"rgba(252, 249, 217, 0.5)",
     secondary: "#617ab1",
     strong: "#00d6c6",
+    white: "white",
+    danger: "#ca1b1b",
   },
 
   font: {
