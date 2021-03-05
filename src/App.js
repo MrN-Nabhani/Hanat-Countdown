@@ -4,6 +4,7 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CreateCountDown from "./pages/CreateCountDown/CreateCountDown";
+import Auth from "./components/HOC/Auth";
 
 class App extends Component {
   render() {
@@ -12,8 +13,13 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/dashboard/new-count-down" component={CreateCountDown} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Auth>
+            <Route
+              path="/dashboard/new-count-down"
+              component={CreateCountDown}
+            />
+            <Route path="/dashboard" component={Dashboard} />
+          </Auth>
         </Switch>
       </Router>
     );
