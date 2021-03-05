@@ -10,6 +10,9 @@ export const StyledInputField = styled.div`
 export const Input = styled.input`
   width: 65%;
   padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid;
+  outline: none;
 `;
 
 export const Label = styled.label`
