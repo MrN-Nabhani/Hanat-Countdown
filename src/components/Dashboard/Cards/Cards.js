@@ -10,13 +10,14 @@ export default class Cards extends Component {
     };
   }
   componentDidMount() {
-    getConnection("url").then((response) => {
+    /*  getConnection("url").then((response) => {
       let data = response.data;
       this.setState({ cards: data.cards, loaded: true });
       //title , id , finishTime
-    });
+    });*/
   }
-  getCards = () => {
+
+  render() {
     let cards;
     if (this.state.loaded) {
       cards = this.state.cards.map((card) => {
@@ -25,10 +26,6 @@ export default class Cards extends Component {
         );
       });
     }
-    return cards;
-  };
-  render() {
-    let cards = this.getCards();
-    return { cards };
+    return <div>{cards}</div>;
   }
 }

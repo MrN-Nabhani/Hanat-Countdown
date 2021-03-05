@@ -4,7 +4,7 @@ import StyledHeader from "../../components/common/Typography/StyledHeader";
 import { RegistrationForm } from "./StyledSignup";
 import InputField from "../../components/common/inputField/InputField";
 import SubmitButton from "../../components/common/submitButton/SubmitButton";
-import { post } from "../../services/apiCrud";
+import { post } from "../../Services/apiCrud.js";
 
 const initialState = {
   name: "",
