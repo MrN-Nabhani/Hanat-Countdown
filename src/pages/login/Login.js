@@ -68,7 +68,7 @@ export class Login extends Component {
 
         <SubmitButton title="SUBMIT" />
         <p>
-          don't have an account? <NavLink to="/">signup</NavLink>
+          don't have an account? <NavLink to="/gh-pages-url">signup</NavLink>
         </p>
       </LoginForm>
     );

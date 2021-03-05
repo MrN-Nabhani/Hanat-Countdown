@@ -7,12 +7,15 @@ function Auth() {
   if (localStorage.getItem("TOKEN"))
     return (
       <Switch>
-        <Route path="/dashboard/new-count-down" component={CreateCountDown} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route
+          path="/gh-pages-url/dashboard/new-count-down"
+          component={CreateCountDown}
+        />
+        <Route path="/gh-pages-url/dashboard" component={Dashboard} />
       </Switch>
     );
   else {
-    return <Redirect to="/login" />;
+    return <Redirect to="/gh-pages-url/login" />;
   }
 }
 

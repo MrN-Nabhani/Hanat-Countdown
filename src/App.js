@@ -8,8 +8,8 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={Signup} />
-          <Route path="/login" component={Login} />
+          <Route exact path="/gh-pages-url" component={Signup} />
+          <Route path="/gh-pages-url/login" component={Login} />
           <Auth />
         </Switch>
       </Router>
