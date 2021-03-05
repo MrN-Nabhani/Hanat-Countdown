@@ -4,9 +4,30 @@ import Navbar from "../../components/Dashboard/Navbar/Navbar";
 import Card from "../../components/Dashboard/Card/Card";
 import { Container, CardWrapper } from "./StyledDashboard";
 import AddCardButton from "../../components/Dashboard/AddCardButton/AddCardButton";
+import { get } from "../../services/apiCrud";
+
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
+  }
+
+  state = {
+    username: "",
+    cards: [],
+    error: false,
+  };
+
+  componentDidMount() {
+    get("http://hanat-app.herokuapp.com/api/users/me")
+      .then((res) => {
+        console.log(res.data.user);
+        const user = res.data.user;
+        this.setState({ username: user.name, cards: user.countdowns });
+      })
+      .catch((err) => {
+        this.setState({ cards: [], error: true });
+        console.log(err);
+      });
   }
 
   render() {
@@ -18,16 +39,15 @@ export default class Dashboard extends Component {
             <Button color="white" bgColor="danger" title="logout" />
           }
         />
+        {this.state.error && <p> AN ERROR HAD OCCURED!</p>}
         <CardWrapper>
-          {Array(5)
-            .fill(0)
-            .map((_, idx) => (
-              <Card
-                key={idx}
-                title="countdown-title"
-                countdown="YYMM:DD:HH:MM:SS APM"
-              />
-            ))}
+          {this.state.cards.map((countdown) => (
+            <Card
+              key={countdown.id}
+              title={countdown.title}
+              countdown={countdown.finishTime}
+            />
+          ))}
         </CardWrapper>
         <AddCardButton />
       </Container>

@@ -8,7 +8,6 @@ export const CardWrapper = styled.div`
   display: flex;
   padding: 1rem;
   flex-direction: column;
-  justify-content: space-between;
   height: 75vh;
   overflow-y: scroll;
 `;
