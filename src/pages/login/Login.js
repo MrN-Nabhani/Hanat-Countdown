@@ -40,6 +40,7 @@ export class Login extends Component {
         <InputField
           name="email"
           type="email"
+          value={this.state.email}
           label="Email"
           placeholder="name@domain.com"
           required
@@ -50,6 +51,7 @@ export class Login extends Component {
           name="password"
           type="Password"
           label="Password"
+          value={this.state.password}
           placeholder="********"
           required
           handleChange={this.handleChange}
