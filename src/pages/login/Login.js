@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Image from "../../components/common/Image/StyledImage";
 import InputField from "../../components/common/inputField/InputField";
 import StyledHeader from "../../components/common/Typography/StyledHeader";
 import SubmitButton from "../../components/common/submitButton/SubmitButton";
@@ -39,6 +40,7 @@ export class Login extends Component {
   render() {
     return (
       <LoginForm onSubmit={this.handleSubmit}>
+        <Image />
         <StyledHeader>Login</StyledHeader>
         {this.state.error && (
           <p>sorry, but something is wrong with the credintials</p>

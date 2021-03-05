@@ -7,10 +7,6 @@ import AddCardButton from "../../components/Dashboard/AddCardButton/AddCardButto
 import { get } from "../../services/apiCrud";
 
 export default class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     username: "",
     cards: [],
@@ -20,7 +16,6 @@ export default class Dashboard extends Component {
   componentDidMount() {
     get("http://hanat-app.herokuapp.com/api/users/me")
       .then((res) => {
-        console.log(res.data.user);
         const user = res.data.user;
         this.setState({ username: user.name, cards: user.countdowns });
       })
