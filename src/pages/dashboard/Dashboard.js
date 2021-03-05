@@ -34,18 +34,18 @@ export default class Dashboard extends Component {
     return (
       <Container>
         <Navbar
-          title="NAME"
+          title={this.state.username}
           actionButton={
             <Button color="white" bgColor="danger" title="logout" />
           }
         />
         {this.state.error && <p> AN ERROR HAD OCCURED!</p>}
         <CardWrapper>
-          {this.state.cards.map((countdown) => (
+          {this.state.cards.slice(1).map((countdown) => (
             <Card
               key={countdown.id}
               title={countdown.title}
-              countdown={countdown.finishTime}
+              finishTime={countdown.finishTime}
             />
           ))}
         </CardWrapper>
