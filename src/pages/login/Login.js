@@ -3,29 +3,33 @@ import InputField from "../../components/common/inputField/InputField";
 import StyledHeader from "../../components/common/Typography/StyledHeader";
 import SubmitButton from "../../components/common/submitButton/SubmitButton";
 import { LoginForm } from "./StyledLogin";
+import { NavLink } from "react-router-dom";
+import { post } from "../../services/apiCrud";
+
+const initialState = {
+  email: "",
+  password: "",
+};
 
 export class Login extends Component {
-  state = {
-    email: "",
-    password: "",
-    isSubmitting: false,
-  };
+  state = initialState;
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    //service -> axios -> navigate to dashboard
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
-    this.setState({
-      email: "",
-      password: "",
-      isSubmitting: false,
-    });
+
+    post("http://hanat-app.herokuapp.com/api/users/login", this.state)
+      .then((res) => {
+        localStorage.setItem("TOKEN", res.data.token);
+        this.props.history.push("/dashboard");
+      })
+      .catch((err) => console.log(err));
+    this.setState(initialState);
   };
 
   render() {
@@ -50,8 +54,11 @@ export class Login extends Component {
           required
           handleChange={this.handleChange}
         />
+
         <SubmitButton title="SUBMIT" />
-        <p>already registered? </p>
+        <p>
+          don't have an account? <NavLink to="/">signup</NavLink>
+        </p>
       </LoginForm>
     );
   }

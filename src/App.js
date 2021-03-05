@@ -7,19 +7,15 @@ import Dashboard from "./pages/Dashboard/Dashboard.js";
 class App extends Component {
   render() {
     return (
-      <Dashboard />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/dashbord" component={Dashboard} />
+        </Switch>
+      </Router>
     );
   }
 }
 
 export default App;
-
-/*
-
- <Router>
-        <Switch>
-          <Route exact path="/" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
-        </Switch>
-      </Router>*/

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import StyledHeader from "../../components/common/Typography/StyledHeader";
 import { RegistrationForm } from "./StyledSignup";
 import InputField from "../../components/common/inputField/InputField";
@@ -26,12 +27,12 @@ class Signup extends Component {
 
     post("http://hanat-app.herokuapp.com/api/users/register", this.state)
       .then((res) => {
+        console.log(res.data.token);
         localStorage.setItem("TOKEN", res.data.token);
+        this.setState(initialState);
         this.props.history.push("/dashboard");
       })
       .catch((err) => console.log(err));
-
-    this.setState(initialState);
   };
 
   render() {
@@ -67,8 +68,10 @@ class Signup extends Component {
           required
           handleChange={this.handleChange}
         />
-        <SubmitButton title="SUBMIT" />
-        <p>already registered? </p>
+        <SubmitButton title="JOIN" />
+        <p>
+          already registered? <NavLink to="/login">login</NavLink>
+        </p>
       </RegistrationForm>
     );
   }

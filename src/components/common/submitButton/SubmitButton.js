@@ -1,11 +1,11 @@
 import React from "react";
-import { Button } from "./StyledSumitButton";
+import { StyledSubmitButton } from "./StyledSumitButton";
 
 function SubmitButton({ title, handleClick }) {
   return (
-    <Button type="submit" onChange={handleClick}>
+    <StyledSubmitButton type="submit" onChange={handleClick}>
       {title}
-    </Button>
+    </StyledSubmitButton>
   );
 }
 
