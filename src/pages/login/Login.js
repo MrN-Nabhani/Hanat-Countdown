@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Image from "../../components/common/Image/StyledImage";
 import InputField from "../../components/common/inputField/InputField";
 import StyledHeader from "../../components/common/Typography/StyledHeader";
 import SubmitButton from "../../components/common/submitButton/SubmitButton";
@@ -9,6 +10,7 @@ import { post } from "../../services/apiCrud";
 const initialState = {
   email: "",
   password: "",
+  error: false,
 };
 
 export class Login extends Component {
@@ -28,18 +30,26 @@ export class Login extends Component {
         localStorage.setItem("TOKEN", res.data.token);
         this.props.history.push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        this.setState({ error: true });
+        console.log(err);
+      });
     this.setState(initialState);
   };
 
   render() {
     return (
       <LoginForm onSubmit={this.handleSubmit}>
+        <Image />
         <StyledHeader>Login</StyledHeader>
+        {this.state.error && (
+          <p>sorry, but something is wrong with the credintials</p>
+        )}
 
         <InputField
           name="email"
           type="email"
+          value={this.state.email}
           label="Email"
           placeholder="name@domain.com"
           required
@@ -50,6 +60,7 @@ export class Login extends Component {
           name="password"
           type="Password"
           label="Password"
+          value={this.state.password}
           placeholder="********"
           required
           handleChange={this.handleChange}

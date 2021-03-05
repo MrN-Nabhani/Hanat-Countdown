@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Image from "../../components/common/Image/StyledImage";
 import { NavLink } from "react-router-dom";
 import StyledHeader from "../../components/common/Typography/StyledHeader";
 import { RegistrationForm } from "./StyledSignup";
@@ -32,13 +33,20 @@ class Signup extends Component {
         this.setState(initialState);
         this.props.history.push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        this.setState({ error: true });
+        console.log(err);
+      });
   };
 
   render() {
     return (
       <RegistrationForm action="POST" onSubmit={this.handleSubmit}>
+        <Image />
         <StyledHeader>Signup</StyledHeader>
+        {this.state.error && (
+          <p>Oops, an error had occured! Please try again</p>
+        )}
         <InputField
           name="name"
           type="text"

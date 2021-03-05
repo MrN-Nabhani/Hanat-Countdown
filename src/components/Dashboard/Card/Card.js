@@ -1,16 +1,38 @@
-import React, { Component } from "react";
-import Header from "../../common/Typography/StyledHeader";
-import CardSection from "./StyledCard.js";
+import React, { useState, useEffect } from "react";
+import CardSection, { CardTitle, CardTime } from "./StyledCard.js";
+import moment from "moment";
 
-export default class Card extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <CardSection radius="6px" width="750px" height="175px">
-        <Header>{this.props.title}</Header>
-      </CardSection>
-    );
-  }
+function Card({ title, finishTime }) {
+  const [countdown, setCountdown] = useState({
+    time: moment(),
+    yearsLeft: 0,
+  });
+
+  useEffect(() => {
+    const interval = window.setInterval(function () {
+      const then = moment(finishTime);
+      const now = moment();
+
+      const yearsLeft = then.diff(now, "years");
+      const timeUntil = then.diff(now);
+      const time = moment(timeUntil);
+      setCountdown({ time, yearsLeft });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <CardSection>
+      <CardTitle>{title}</CardTitle>
+      <CardTime>
+        {countdown.yearsLeft} Years &nbsp;
+        {countdown.time.format("MM")} Months &nbsp;
+        {countdown.time.format("DD")} Days &nbsp;
+        {countdown.time.format("HH:mm:ss")}
+      </CardTime>
+    </CardSection>
+  );
 }
+
+export default Card;

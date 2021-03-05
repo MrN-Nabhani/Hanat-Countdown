@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import React from "react";
+import StyledButton from "./StyledButton";
 
-const Button = styled.button`
-  border-radius: 6px;
-  border: 1px solid;
-  outline: none;
-  &:hover {
-    cursor: pointer;
-    font-weight: bold;
-  }
-`;
+function Button({ title, handler, color, bgColor }) {
+  return (
+    <StyledButton color={color} bgColor={bgColor} onClick={handler}>
+      {title}
+    </StyledButton>
+  );
+}
+
 export default Button;
