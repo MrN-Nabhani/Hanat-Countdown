@@ -5,4 +5,8 @@ export const LoginForm = styled.form`
   padding: 3rem;
   border: 1px solid black;
   text-align: center;
+
+  @media only screen and (max-width: 900px) {
+    margin: 1rem;
+  }
 `;
