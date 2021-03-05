@@ -32,13 +32,19 @@ class Signup extends Component {
         this.setState(initialState);
         this.props.history.push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        this.setState({ error: true });
+        console.log(err);
+      });
   };
 
   render() {
     return (
       <RegistrationForm action="POST" onSubmit={this.handleSubmit}>
         <StyledHeader>Signup</StyledHeader>
+        {this.state.error && (
+          <p>Oops, an error had occured! Please try again</p>
+        )}
         <InputField
           name="name"
           type="text"

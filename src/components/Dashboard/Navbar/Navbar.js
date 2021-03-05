@@ -5,7 +5,7 @@ import Header from "../../common/Typography/StyledHeader";
 function Navbar({ title, actionButton }) {
   return (
     <StyledNavbar>
-      <Header>{title}</Header>
+      <Header>{title}'s Countdowns</Header>
       {actionButton}
     </StyledNavbar>
   );

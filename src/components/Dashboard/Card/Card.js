@@ -9,8 +9,7 @@ function Card({ title, finishTime }) {
   });
 
   useEffect(() => {
-    const interval = 1000;
-    window.setInterval(function () {
+    const interval = window.setInterval(function () {
       const then = moment(finishTime);
       const now = moment();
 
@@ -18,7 +17,9 @@ function Card({ title, finishTime }) {
       const timeUntil = then.diff(now);
       const time = moment(timeUntil);
       setCountdown({ time, yearsLeft });
-    }, interval);
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (

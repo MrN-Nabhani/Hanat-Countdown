@@ -30,13 +30,23 @@ export default class Dashboard extends Component {
       });
   }
 
+  logout = () => {
+    localStorage.removeItem("TOKEN");
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <Container>
         <Navbar
           title={this.state.username}
           actionButton={
-            <Button color="white" bgColor="danger" title="logout" />
+            <Button
+              color="white"
+              bgColor="danger"
+              title="logout"
+              handler={this.logout}
+            />
           }
         />
         {this.state.error && <p> AN ERROR HAD OCCURED!</p>}

@@ -9,6 +9,7 @@ import { post } from "../../services/apiCrud";
 const initialState = {
   email: "",
   password: "",
+  error: false,
 };
 
 export class Login extends Component {
@@ -28,7 +29,10 @@ export class Login extends Component {
         localStorage.setItem("TOKEN", res.data.token);
         this.props.history.push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        this.setState({ error: true });
+        console.log(err);
+      });
     this.setState(initialState);
   };
 
@@ -36,6 +40,9 @@ export class Login extends Component {
     return (
       <LoginForm onSubmit={this.handleSubmit}>
         <StyledHeader>Login</StyledHeader>
+        {this.state.error && (
+          <p>sorry, but something is wrong with the credintials</p>
+        )}
 
         <InputField
           name="email"
