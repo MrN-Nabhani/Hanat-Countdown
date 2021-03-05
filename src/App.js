@@ -1,28 +1,19 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Cards from "./components/Dashboard/Cards/Cards";
 import Signup from "./pages/signup/Signup";
-import Card from "./components/Dashboard/Cards/Card/Card.js";
+import Login from "./pages/login/Login";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Card />
-        <Card />
-      </div>
+       <Router>
+        <Switch>
+          <Route exact path="/" component={Signup} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </Router>
     );
   }
 }
 
 export default App;
-/*
-
- <Router>
-        <Switch>
-          <Route exact path="/" component={Signup} />
-          <Route path="/" component={Comp} />
-          <Route path="/" component={Comp} />
-        </Switch>
-      </Router>
-*/
