@@ -36,7 +36,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <RegistrationForm onSubmit={this.handleSubmit}>
+      <RegistrationForm action="POST" onSubmit={this.handleSubmit}>
         <StyledHeader>Signup</StyledHeader>
         <InputField
           name="name"
