@@ -6,10 +6,11 @@ import Login from "./pages/login/Login";
 class App extends Component {
   render() {
     return (
-       <Router>
+      <Router>
         <Switch>
           <Route exact path="/" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path="/dashbord" component={Login} />
         </Switch>
       </Router>
     );

@@ -5,6 +5,7 @@ export const StyledInputField = styled.div`
   margin: 1rem auto;
   width: 33%;
   justify-content: space-between;
+  align-items: baseline;
 `;
 
 export const Input = styled.input`
